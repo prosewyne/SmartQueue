@@ -83,21 +83,6 @@ try {
     throw 'Could not read the GitHub account ID.'
   }
 
-  $repositoryName = Read-Host 'Repository name [SmartQueue]'
-  if ([string]::IsNullOrWhiteSpace($repositoryName)) { $repositoryName = 'SmartQueue' }
-  if ($repositoryName -notmatch '^[A-Za-z0-9._-]+$') {
-    throw 'Repository names can only contain letters, numbers, periods, underscores, and hyphens.'
-  }
-
-  do {
-    $visibility = Read-Host 'Repository visibility: private or public [private]'
-    if ([string]::IsNullOrWhiteSpace($visibility)) { $visibility = 'private' }
-    $visibility = $visibility.ToLowerInvariant()
-    if ($visibility -notin @('private', 'public')) {
-      Write-Host 'Enter private or public.' -ForegroundColor Yellow
-    }
-  } while ($visibility -notin @('private', 'public'))
-
   if (-not (Test-Path -LiteralPath (Join-Path $projectRoot '.git') -PathType Container)) {
     Invoke-CheckedCommand 'git' @('init', '-b', 'main')
   }
@@ -118,12 +103,28 @@ try {
 
   $origin = & git remote get-url origin 2>$null
   if ($LASTEXITCODE -eq 0 -and $origin) {
-    Write-Host "Existing origin: $origin" -ForegroundColor Yellow
+    Write-Host "Using existing repository: $origin" -ForegroundColor Yellow
+    Write-Host 'This publisher will not change the existing repository visibility.'
     $confirmation = Read-Host 'Type PUSH to send this project to that remote'
-    if ($confirmation -cne 'PUSH') { throw 'Push cancelled; existing remote was left unchanged.' }
+    if ($confirmation.Trim() -ine 'PUSH') { throw 'Push cancelled; existing remote was left unchanged.' }
     Invoke-CheckedCommand 'git' @('push', '--set-upstream', 'origin', $branch)
     $repositoryUrl = $origin -replace '\.git$', ''
   } else {
+    $repositoryName = Read-Host 'Repository name [SmartQueue]'
+    if ([string]::IsNullOrWhiteSpace($repositoryName)) { $repositoryName = 'SmartQueue' }
+    if ($repositoryName -notmatch '^[A-Za-z0-9._-]+$') {
+      throw 'Repository names can only contain letters, numbers, periods, underscores, and hyphens.'
+    }
+
+    do {
+      $visibility = Read-Host 'Repository visibility: private or public [private]'
+      if ([string]::IsNullOrWhiteSpace($visibility)) { $visibility = 'private' }
+      $visibility = $visibility.ToLowerInvariant()
+      if ($visibility -notin @('private', 'public')) {
+        Write-Host 'Enter private or public.' -ForegroundColor Yellow
+      }
+    } while ($visibility -notin @('private', 'public'))
+
     $visibilityFlag = if ($visibility -eq 'private') { '--private' } else { '--public' }
     Invoke-CheckedCommand 'gh' @('repo', 'create', $repositoryName, $visibilityFlag, '--source', $projectRoot, '--remote', 'origin', '--push')
     $repositoryUrl = (& gh repo view "$githubUser/$repositoryName" --json url --jq '.url').Trim()
