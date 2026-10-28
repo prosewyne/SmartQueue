@@ -6,7 +6,7 @@ SmartQueue is a React frontend with an Express API for campus service queues.
 
 ### Current live demo
 
-[Open SmartQueue](https://nightmarish-spooky-phantasm-v65qp6794jg7fwqwq-3000.app.github.dev/)
+[Open SmartQueue]([https://nightmarish-spooky-phantasm-v65qp6794jg7fwqwq-3000.app.github.dev/](https://nightmarish-spooky-phantasm-v65qp6794jg7fwqwq-3000.app.github.dev/))
 
 This link uses the current GitHub Codespace. It works while the Codespace is running; if it stops after being idle, resume the Codespace and reopen the link. Creating a replacement Codespace may give you a different app URL.
 
