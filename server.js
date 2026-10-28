@@ -263,6 +263,6 @@ app.get('*', (_req, res) => {
   res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`SmartQueue backend listening on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`SmartQueue backend running on http://localhost:${PORT}`);
 });
