@@ -10,5 +10,5 @@
     }
   },
   "postCreateCommand": "npm ci && npm run build",
-  "postStartCommand": "nohup npm start > /tmp/smartqueue.log 2>&1 < /dev/null &"
+  "postStartCommand": "bash .devcontainer/start-server.sh"
 }
