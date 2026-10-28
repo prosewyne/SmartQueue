@@ -11,6 +11,7 @@ npm.cmd start
 ```
 
 Open http://localhost:3000.
+Open http://192.168.1.34:3000/
 
 ## Run from GitHub Codespaces
 
