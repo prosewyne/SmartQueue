@@ -2,13 +2,16 @@
 
 SmartQueue is a React frontend with an Express API for campus service queues.
 
-## Open on a MacBook or share the demo
+## Deploy a public demo
 
-1. Open the repository on GitHub and choose **Code** > **Codespaces** > **Create codespace on main**.
-2. Wait for setup to finish. Codespaces builds the React app and starts the Express server automatically.
-3. Open the **Ports** tab, find port `3000`, and choose **Open in Browser**. Use the generated Codespaces app URL (typically on `app.github.dev`) on your MacBook or share it with your professor.
+The app can run on Render so it is available without your computer running and can be opened from MacBooks, PCs, and phones.
 
-Do not use `localhost` on your MacBook: it points to the Mac itself, not the Codespace. The Codespace must stay running while the demo is in use. Port `3000` is public, so anyone with its link can use the demo. Do not enter real student information.
+1. Sign in to [Render](https://dashboard.render.com/) and choose **New** > **Blueprint**.
+2. Connect your GitHub account if asked, then select `prosewyne/SmartQueue`.
+3. Render reads `render.yaml`. Review the service and choose **Apply** to deploy it on the free plan.
+4. When the deployment finishes, open the service in Render and use its `onrender.com` URL. Share that URL to access the same queue from other devices.
+
+The free service sleeps after 15 minutes without requests and can take about a minute to start again when someone opens the link. Its local files are temporary: ticket and window data can reset when the service sleeps, restarts, or is redeployed. This free setup is for demos only; do not enter real student information. For always-on service and durable ticket storage, use paid hosting with a persistent database.
 
 ## Run locally on the computer running the server
 
@@ -18,7 +21,7 @@ npm.cmd run build
 npm.cmd start
 ```
 
-Open http://localhost:3000 on that same computer. This local address does not work from a different computer.
+Open http://localhost:3000 on that same computer. This local address does not work from a different computer and is not the public demo URL.
 
 ## Publish to GitHub
 
