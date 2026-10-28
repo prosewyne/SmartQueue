@@ -1,0 +1,20 @@
+{
+  "name": "smartqueue-demo",
+  "version": "1.0.0",
+  "description": "SmartQueue frontend and backend demo",
+  "main": "server.js",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.7.0",
+    "vite": "^6.3.5"
+  }
+}

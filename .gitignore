@@ -1,0 +1,6 @@
+node_modules/
+dist/
+smartqueue-data.json
+smartqueue-data.json.tmp
+*.tmp
+.env
