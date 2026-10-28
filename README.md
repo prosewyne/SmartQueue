@@ -26,7 +26,7 @@ npm.cmd run build
 npm.cmd start
 ```
 
-Open http://localhost:3000 on that same computer. This local address does not work from a different computer.
+Open (https://nightmarish-spooky-phantasm-v65qp6794jg7fwqwq-3000.app.github.dev/) on that same computer. This local address does not work from a different computer.
 
 ## Publish to GitHub
 
