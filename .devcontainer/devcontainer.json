@@ -1,0 +1,14 @@
+{
+  "name": "SmartQueue",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "SmartQueue demo",
+      "onAutoForward": "openBrowser",
+      "visibility": "public"
+    }
+  },
+  "postCreateCommand": "npm ci && npm run build",
+  "postStartCommand": "nohup npm start > /tmp/smartqueue.log 2>&1 < /dev/null &"
+}
