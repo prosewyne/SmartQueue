@@ -4,6 +4,12 @@ SmartQueue is a React frontend with an Express API for campus service queues.
 
 ## Open on a MacBook or share the demo
 
+### Current live demo
+
+[Open SmartQueue](https://nightmarish-spooky-phantasm-v65qp6794jg7fwqwq-3000.app.github.dev/)
+
+This link uses the current GitHub Codespace. It works while the Codespace is running; if it stops after being idle, resume the Codespace and reopen the link. Creating a replacement Codespace may give you a different app URL.
+
 1. Sign in to GitHub and [create a Codespace for the `main` branch](https://github.com/codespaces/new?repo=prosewyne/SmartQueue&ref=main).
 2. Wait for setup to finish. Codespaces installs dependencies, builds the frontend, starts the backend, and checks that `/api/health` responds.
 3. Open the **Ports** tab, find port `3000`, and choose **Open in Browser**. Use the generated Codespaces app link (usually ending in `app.github.dev`), not the repository link or a `192.168...` address.
